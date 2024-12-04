@@ -12,7 +12,9 @@ function App() {
       next: (data) => setTodos([...data.items]),
     });
   }, []);
-
+  function deleteTodo(id: string){
+    client.models.Todo.delete({id})
+  }
   function createTodo() {
     client.models.Todo.create({ content: window.prompt("Todo content") });
   }
