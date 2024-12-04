@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
-
+import { useAuthenticator } from '@aws-amplify/ui-react';
 const client = generateClient<Schema>();
 
 function App() {
@@ -18,9 +18,10 @@ function App() {
   function createTodo() {
     client.models.Todo.create({ content: window.prompt("Todo content") });
   }
-
+const { signout } = useAuthenticator();
   return (
     <main>
+      <button onClick={signout}></button>
       <h1>My todos</h1>
       <button onClick={createTodo}>+ new</button>
       <ul>
