@@ -18,10 +18,10 @@ function App() {
   function createTodo() {
     client.models.Todo.create({ content: window.prompt("Todo content") });
   }
-const { signout } = useAuthenticator();
+const { signOut } = useAuthenticator();
   return (
     <main>
-      <button onClick={signout}></button>
+      <button onClick={signOut}> Sign Out </button>
       <h1>My todos</h1>
       <button onClick={createTodo}>+ new</button>
       <ul>
